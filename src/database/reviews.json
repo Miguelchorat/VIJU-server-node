@@ -1,0 +1,25 @@
+{
+    "reviews": {
+        "1": {
+            "title": "Nintendo nos fallo",
+            "message": "El juego de pokemon fue un total desastre que no deberia volver a ocurrir a ningun precio",
+            "videogame": 1,
+            "user": 1,
+            "score": 3.45
+        },
+        "2": {
+            "title": "Sony nos fallo",
+            "message": "El juego de gow fue un total desastre que no deberia volver a ocurrir a ningun precio",
+            "videogame": 2,
+            "user": 2,
+            "score": 2.45
+        },
+        "3": {
+            "title": "Microsoft nos fallo",
+            "message": "El juego de halo fue un total desastre que no deberia volver a ocurrir a ningun precio",
+            "videogame": 3,
+            "user": 2,
+            "score": 2.25
+        }
+    }
+}
