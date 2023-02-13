@@ -1,13 +1,41 @@
 const data = require("./reviews.json")
+const dataGame = require("./games.json")
 const fs = require("fs")
 
 const getAllReviews = () => {
-    return data.reviews
+    let json = []
+    
+    Object.keys(data.reviews).forEach(function(review) {
+        let result = getOneReview(review)
+        json.push(result)
+    });
+    
+    return json
 }
-// const getOneProduct = (nombre) => {
-//     const oneProduct = datos.productos[nombre]
-//     return oneProduct;
-// }
+
+const getAllReviewsWithSearch = (search) => {
+    let json = []
+    Object.keys(data.reviews).forEach(function(review) {
+        let result = getOneReview(review)
+        if(result.title.toLowerCase().indexOf(search.toLowerCase()) !== -1)
+            json.push(result)
+    });
+    
+    return json
+}
+
+const getOneReview = (id) => {
+    const oneReview = data.reviews[id]
+    const oneGame = dataGame.games[oneReview.videogame]
+
+    const result = {
+        ...oneReview,
+        name: oneGame['name'],
+        image: oneGame['image']        
+    }
+
+    return result
+}
 
 // const deleteOneProduct = (nombre) => {
 //     delete datos.productos[nombre];
@@ -43,7 +71,8 @@ const getAllReviews = () => {
 // }
 module.exports = {
     getAllReviews,
-    // getOneReview,
+    getAllReviewsWithSearch,
+    getOneReview,    
     // updateOneReview,
     // deleteOneReview,
     // insertReview

@@ -6,6 +6,10 @@ const getAllReviews = () => {
     return allReviews;
 }
 
+const getAllReviewsWithSearch = (search) => {
+    const allReviews = reviewsModel.getAllReviewsWithSearch(search)
+    return allReviews;
+}
 // const createOneReviews = (body) => {
 //     const newReview = {
 //         ...body,
@@ -18,10 +22,10 @@ const getAllReviews = () => {
 //     return review
 // }
 
-// const getOneProduct = (nombre) => {
-//     const oneProduct = productosModelo.getOneProduct(nombre)
-//     return oneProduct;
-// }
+const getOneReview = (id) => {
+    const oneReview = reviewsModel.getOneReview(id)
+    return oneReview;
+}
 
 // const updateOneProduct = (producto) => {
 //     const productoMdf = productosModelo.getOneProduct(producto.nombre)
@@ -45,8 +49,9 @@ const getAllReviews = () => {
 
 module.exports = {
     getAllReviews,
+    getAllReviewsWithSearch,
     // createOneProduct,
-    // getOneProduct,
+    getOneReview,
     // updateOneProduct,
     // deleteOneProduct
 }

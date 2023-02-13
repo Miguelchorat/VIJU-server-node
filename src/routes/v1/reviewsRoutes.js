@@ -6,8 +6,12 @@ router.route("/")
         .get(reviewsController.getAllReviews)
 //         .post(reviewsController.createOneReview)
 
-// router.route("/:reviews")
-//     .get(reviewsController.getOneReview)
+router.route("/search=:search")
+        .get(reviewsController.getAllReviewsWithSearch)
+//         .post(reviewsController.createOneReview)
+
+router.route("/:id")
+     .get(reviewsController.getOneReview)
 //     .put(reviewsController.updateOneReview)
 //     .delete(reviewsController.deleteOneReview)
 

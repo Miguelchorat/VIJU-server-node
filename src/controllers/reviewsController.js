@@ -10,6 +10,17 @@ const getAllReviews = ((req,res,next)=>{
     }
 })
 
+const getAllReviewsWithSearch = ((req,res,next)=>{
+    let search =req.params.search
+    const allReviews = reviewsService.getAllReviewsWithSearch(search);
+
+    if(allReviews){
+        res.send(allReviews)
+    }else{
+        res.status(404).end()
+    }
+})
+
 // const createOneProduct = ((req,res,next)=>{
 //     const {body} = req
 //     console.log(body)
@@ -29,15 +40,15 @@ const getAllReviews = ((req,res,next)=>{
 //     res.end()
 // })
 
-// const getOneProduct = ((req,res,next)=>{
-//     let product =req.params.producto
-//     const oneProduct = productosService.getOneProduct(product)
-//     if(oneProduct){
-//         res.send(oneProduct)
-//     }else{
-//         res.status(404).end()
-//     }
-// })
+const getOneReview = ((req,res,next)=>{
+    let id =req.params.id
+    const oneReview = reviewsService.getOneReview(id)
+    if(oneReview){
+        res.send(oneReview)
+    }else{
+        res.status(404).end()
+    }
+})
 
 // const updateOneProduct = ((req,res,next)=>{    
 //     const {body} = req
@@ -61,8 +72,9 @@ const getAllReviews = ((req,res,next)=>{
 
 module.exports = {
     getAllReviews,
+    getAllReviewsWithSearch,
     // createOneReview,
-    // getOneReview,
+    getOneReview,
     // updateOneReview,
     // deleteOneReview
 }

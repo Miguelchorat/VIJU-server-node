@@ -1,25 +1,46 @@
 {
     "reviews": {
         "1": {
-            "title": "Nintendo nos fallo",
-            "message": "El juego de pokemon fue un total desastre que no deberia volver a ocurrir a ningun precio",
-            "videogame": 1,
+            "id": 1,
+            "title": "Nintendo no nos fallo",
+            "message": "Mario Odyssey es un juego de aventura en 3D desarrollado por Nintendo para la consola Switch. El juego sigue a Mario mientras viaja a diferentes mundos para salvar a su princesa Peach y restaurar el reino de los sueños. La jugabilidad es divertida y fluida, y los controles son fáciles de aprender y usar. Además, el juego ofrece una gran variedad de mundos y desafíos, lo que significa que nunca te aburrirás. Otro aspecto destacado es la personalidad y la presentación del juego. La dirección artística y la banda sonora son excelentes, y la historia es adictiva y llena de momentos divertidos y emocionantes.En general, Mario Odyssey es un juego imprescindible para cualquier fan de Mario o de los juegos de aventura en 3D en general. Es un juego lleno de acción, diversión y emoción, y seguro que te mantendrá entretenido durante horas.",
+            "videogame": 2,
             "user": 1,
-            "score": 3.45
+            "score": 5
         },
         "2": {
-            "title": "Sony nos fallo",
-            "message": "El juego de gow fue un total desastre que no deberia volver a ocurrir a ningun precio",
-            "videogame": 2,
-            "user": 2,
-            "score": 2.45
+            "id": 2,
+            "title": "Sony no nos fallo",
+            "message": "El juego de gow fue una grata sorepsa que deberia volver a ocurrir en un futuro",
+            "videogame": 4,
+            "user": 1,
+            "score": 4.4
         },
         "3": {
-            "title": "Microsoft nos fallo",
+            "id": 3,
+            "title": "Microsoft casi nos fallo",
             "message": "El juego de halo fue un total desastre que no deberia volver a ocurrir a ningun precio",
-            "videogame": 3,
-            "user": 2,
-            "score": 2.25
+            "videogame": 5,
+            "user": 1,
+            "score": 2.7
+        },
+        "4": {
+            "id": 4,
+            "title": "Activision no aprende",
+            "message": "El juego de cod fue un total desastre que no deberia volver a ocurrir a ningun precio",
+            "videogame": 25,
+            "user": 1,
+            "score": 1.7
+        },
+        "5": {
+            "id": 5,
+            "title": "Mihoyo sorprende",
+            "message": "El juego de Genshin Impact fue una total sorpresa que nadie esperaba",
+            "videogame": 27,
+            "user": 1,
+            "score": 4.3
         }
+        
+        
     }
 }
