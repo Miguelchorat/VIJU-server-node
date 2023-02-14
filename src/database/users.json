@@ -1,0 +1,23 @@
+{
+  "users": {
+    "1": {
+      "id": "1",
+      "username": "Prueba",
+      "email": "prueba@prueba.com",
+      "password": "0"
+    },
+    "2": {
+      "id": "2",
+      "username": "Prueba2",
+      "email": "prueba2@prueba.com",
+      "password": "1234567890"
+    },
+    "6b6c19dd-412a-465a-b62e-60bce93e84d6": {
+      "username": "Prueba3",
+      "email": "prueba3@prueba.com",
+      "password": "1234567890",
+      "date": "2013-09-9",
+      "id": "6b6c19dd-412a-465a-b62e-60bce93e84d6"
+    }
+  }
+}

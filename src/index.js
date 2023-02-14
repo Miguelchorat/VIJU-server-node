@@ -1,13 +1,16 @@
 const cors = require("cors")
+const cookieParser = require("cookie-parser")
 const express = require("express")
 const app = express()
+const routesAuthV1 = require("./routes/v1/auth/indexRoutes")
 const routesV1 = require("./routes/v1/indexRoutes")
-//const auth = require("/utils/authorization")
+const auth = require("./utils/authorization")
 
 app.use(express.json())
-//app.use(auth.checkUser)
+app.use(cookieParser())
 app.use(cors())
 app.use("/api/v1", routesV1.router)
+app.use("/api/v1/auth", auth.authenticateUser, routesAuthV1.router)
 
 
 const PORT = process.env.PORT || 3001
