@@ -1,5 +1,5 @@
 const reviewsModel = require("../database/reviewsModel")
-const {v4: uuid} = require("uuid")
+const { v4: uuid } = require("uuid")
 
 const getAllReviews = () => {
     const allReviews = reviewsModel.getAllReviews()
@@ -10,17 +10,25 @@ const getAllReviewsWithSearch = (search) => {
     const allReviews = reviewsModel.getAllReviewsWithSearch(search)
     return allReviews;
 }
-// const createOneReviews = (body) => {
-//     const newReview = {
-//         ...body,
-//         "id": uuid(),
-//         "fechaAlta": new Date().toLocaleDateString,
-//         "fechaModificacion" : new Date().toLocaleTimeString
-//     };
-//     const review = reviewsModel.insertReview(newReview)
-//     if(!review) return false
-//     return review
-// }
+
+const createOneReview = (body) => {
+    const date = new Date()
+    const year = date.getFullYear()
+    const month = (date.getMonth() + 1).toString().padStart(2, '0')
+    const day = date.getDate().toString().padStart(2, '0')
+    const currentDate = `${year}-${month}-${day}`;
+
+    const newReview = {
+        "id": uuid(),
+        ...body,        
+        "fechaAlta": currentDate,
+        "fechaModificacion": currentDate
+    };
+    
+    const review = reviewsModel.insertReview(newReview)
+    if (!review) return false
+    return review
+}
 
 const getOneReview = (id) => {
     const oneReview = reviewsModel.getOneReview(id)
@@ -50,7 +58,7 @@ const getOneReview = (id) => {
 module.exports = {
     getAllReviews,
     getAllReviewsWithSearch,
-    // createOneProduct,
+    createOneReview,
     getOneReview,
     // updateOneProduct,
     // deleteOneProduct

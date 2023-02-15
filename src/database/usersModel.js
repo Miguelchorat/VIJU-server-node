@@ -3,7 +3,7 @@ const sessionsData = require("./sessions.json")
 const fs = require("fs")
 
 const getOneUser = (id) => {
-    const oneUser = usersData.users[id]    
+    const oneUser = usersData.users[id]
     return oneUser
 }
 
@@ -13,40 +13,58 @@ const checkUserEmail = (email, password) => {
     )
 }
 
-const checkEmail = (email) => {
+const checkEmail = (email, userId) => {
     let check = false
-    Object.keys(usersData.users).forEach(function(id) {
-        let result = getOneUser(id)
-        if(result.email.toLowerCase() === email.toLowerCase()) check = true       
+    Object.keys(usersData.users).forEach(function (id) {
+        if (id !== userId) {
+            let result = getOneUser(id)
+            if (result.email.toLowerCase() === email.toLowerCase()) check = true
+        }
     })
     return check
 }
 
-const checkUsername = (username) => {
+const checkUsername = (username, userId) => {
     let check = false
-    Object.keys(usersData.users).forEach(function(id) {
-        let result = getOneUser(id)
-        if(result.username.toLowerCase() === username.toLowerCase()) check = true       
-    })    
+    Object.keys(usersData.users).forEach(function (id) {
+        if (id !== userId) {
+            let result = getOneUser(id)
+            if (result.username.toLowerCase() === username.toLowerCase()) {
+                check = true
+            }
+        }
+
+    })
+
     return check
 }
 
 const insertUser = (user) => {
     const id = user.id
+    const existingEmail = checkEmail(user.email,id)
+    const existingUsername = checkUsername(user.username,id)
+    
+    if (existingEmail && existingUsername) {
+        return { success: false, errorEmail: true, errorUsername: true }
+    } else if (existingEmail) {
+        return { success: false, errorEmail: true, errorUsername: false }
+    } else if (existingUsername) {
+        return { success: false, errorEmail: false, errorUsername: true }
+    }
+    
     usersData.users[id] = user
-
     fs.writeFileSync(
         "./src/database/users.json",
         JSON.stringify(usersData, null, 2),
         "utf8"
-    );
+    )
 
-    return user;
+    return { success: true, errorEmail: false, errorUsername: false }
 }
 
-const updateUser = (newUser) =>{
+const updateUser = (newUser) => {
     const user = usersData.users[newUser.id]
-    if(!user) return false
+    if (!user) return false
 
     usersData.users[newUser.id] = newUser
     fs.writeFileSync(

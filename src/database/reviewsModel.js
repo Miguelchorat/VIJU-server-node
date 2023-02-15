@@ -1,5 +1,7 @@
 const data = require("./reviews.json")
 const dataGame = require("./games.json")
+const dataUser = require("./users.json")
+
 const fs = require("fs")
 
 const getAllReviews = () => {
@@ -27,11 +29,12 @@ const getAllReviewsWithSearch = (search) => {
 const getOneReview = (id) => {
     const oneReview = data.reviews[id]
     const oneGame = dataGame.games[oneReview.videogame]
-
+    const user = dataUser.users[oneReview.user]
     const result = {
         ...oneReview,
         name: oneGame['name'],
-        image: oneGame['image']        
+        image: oneGame['image'],
+        username: user['username']        
     }
 
     return result
@@ -57,23 +60,23 @@ const getOneReview = (id) => {
 //     );
 // }
 
-// const insertProduct = (producto) => {
-//     const nombre = producto.nombre
-//     datos.productos[nombre] = producto
+const insertReview = (review) => {
+    const id = review.id
+    data.reviews[id] = review
 
-//     fs.writeFileSync(
-//         "./src/database/productos.json",
-//         JSON.stringify(datos, null, 2),
-//         "utf8"
-//     );
+    fs.writeFileSync(
+        "./src/database/reviews.json",
+        JSON.stringify(data, null, 2),
+        "utf8"
+    );
 
-//     return producto;
-// }
+    return review;
+}
 module.exports = {
     getAllReviews,
     getAllReviewsWithSearch,
     getOneReview,    
     // updateOneReview,
     // deleteOneReview,
-    // insertReview
+    insertReview
 }

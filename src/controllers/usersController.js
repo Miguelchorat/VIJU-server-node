@@ -11,11 +11,10 @@ const createOneUser = ((req,res,next)=>{
             "password": body.password,
             "date": body.date
         }
-        const createdUser = usersService.createOneUser(newUser);
-        if(createdUser) res.status(200).send(createdUser);
+        const message = usersService.createOneUser(newUser);
+        if(message) res.status(200).send(message);
         else res.status(406).end();
     }    
-    res.end()
 })
 
 const updateUser = ((req,res,next)=>{

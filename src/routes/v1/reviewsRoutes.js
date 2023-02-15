@@ -4,6 +4,7 @@ const reviewsController = require("../../controllers/reviewsController")
 
 router.route("/")
         .get(reviewsController.getAllReviews)
+        .post(reviewsController.createOneReview)
 
 router.route("/search=:search")
         .get(reviewsController.getAllReviewsWithSearch)

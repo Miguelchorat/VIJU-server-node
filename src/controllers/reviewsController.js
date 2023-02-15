@@ -21,24 +21,25 @@ const getAllReviewsWithSearch = ((req,res,next)=>{
     }
 })
 
-// const createOneProduct = ((req,res,next)=>{
-//     const {body} = req
-//     console.log(body)
-//     if(!body.nombre || !body.precio  || !body.categoria ){
-//         res.status(400).end()
-//     }else{
-//         const newProduct = {
-//             "nombre" : body.nombre,
-//             "precio": body.precio,
-//             "categoria": body.categoria
-//         }
-//         const createdProduct = productosService.createOneProduct(newProduct);
-//         if(createdProduct) res.status(200).send(createdProduct);
-//         else res.status(406).end();
-//     }
+const createOneReview = ((req,res,next)=>{
+    const {body} = req
+    if(!body.title || !body.message  || !body.videogame || !body.user || !body.score ){
+        res.status(400).end()
+    }else{
+        const newReview = {
+            "title" : body.title,
+            "message": body.message,
+            "videogame": body.videogame,
+            "user": body.user,
+            "score": body.score,
+        }
+        const message = reviewsService.createOneReview(newReview);
+        if(message) res.status(200).send(message);
+        else res.status(406).end();
+    }
         
-//     res.end()
-// })
+    res.end()
+})
 
 const getOneReview = ((req,res,next)=>{
     let id =req.params.id
@@ -73,7 +74,7 @@ const getOneReview = ((req,res,next)=>{
 module.exports = {
     getAllReviews,
     getAllReviewsWithSearch,
-    // createOneReview,
+    createOneReview,
     getOneReview,
     // updateOneReview,
     // deleteOneReview

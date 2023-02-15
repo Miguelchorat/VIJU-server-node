@@ -22,34 +22,39 @@ const checkUsername = (username) => {
 
 const deleteOneUser = (id) => {
   const user = usersModel.getOneUser(id)
-  if(!user) return false
-  
+  if (!user) return false
+
   usersModel.deleteOneUser(id)
-  if(!usersModel.getOneUser(id)){
+  if (!usersModel.getOneUser(id)) {
     return user
   } else {
     return false
-  } 
+  }
 }
 
 const createOneUser = (body) => {
-  const newUser = {    
-        ...body,
-        "id": uuid(),
-        "created_at": new Date().toLocaleDateString,
-        "updated_at" : new Date().toLocaleTimeString
-    };
-    const user = usersModel.insertUser(newUser)
-    if(!user) return false
-    return user
+  const date = new Date()
+  const year = date.getFullYear()
+  const month = (date.getMonth() + 1).toString().padStart(2, '0')
+  const day = date.getDate().toString().padStart(2, '0')
+  const currentDate = `${year}-${month}-${day}`;
   
+  const newUser = {
+    "id": uuid(),
+    ...body,
+    "created_at": currentDate,
+    "updated_at": currentDate
+  };
+  const message = usersModel.insertUser(newUser)
+  return message
+
 }
 
 const updateUser = (newUser) => {
-    const user = usersModel.updateUser(newUser)
-    if(!user) return false
-    return user
-  
+  const user = usersModel.updateUser(newUser)
+  if (!user) return false
+  return user
+
 }
 
 const addSession = (userId, sessionId) => {

@@ -4,20 +4,19 @@
       "id": "1",
       "username": "Prueba",
       "email": "prueba@prueba.com",
-      "password": "0"
+      "password": "3dd635a808ddb6dd4b6731f7c409d53dd4b14df2",
+      "date": "1996-09-29",
+      "created_at": "2023-02-15",
+      "updated_at": "2023-02-15"
     },
-    "2": {
-      "id": "2",
-      "username": "Prueba2",
-      "email": "prueba2@prueba.com",
-      "password": "1234567890"
-    },
-    "6b6c19dd-412a-465a-b62e-60bce93e84d6": {
-      "username": "Prueba3",
-      "email": "prueba3@prueba.com",
-      "password": "1234567890",
-      "date": "2013-09-9",
-      "id": "6b6c19dd-412a-465a-b62e-60bce93e84d6"
+    "89ab3fe3-ce57-4a45-959c-f596483c822b": {
+      "id": "89ab3fe3-ce57-4a45-959c-f596483c822b",
+      "username": "Sleykun",
+      "email": "sleykun96@gmail.com",
+      "password": "3dd635a808ddb6dd4b6731f7c409d53dd4b14df2",
+      "date": "1996-09-29",
+      "created_at": "2023-02-15",
+      "updated_at": "2023-02-15"
     }
   }
 }

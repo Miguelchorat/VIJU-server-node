@@ -8,8 +8,10 @@ router.use("/reviews", reviewsRoutes.router)
 router.use("/games", gamesRoutes.router)
 router.use("/users", usersRoutes.router)
 
-router.get("/", (req, res, next)=>{
-    res.send("Send reviews")
-})
+router.get("/", (req, res, next) => {
+    setTimeout(() => {
+      res.status(200).end();
+    }, 10000);
+  }) 
 
 module.exports.router = router
