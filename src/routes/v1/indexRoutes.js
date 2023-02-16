@@ -11,7 +11,7 @@ router.use("/users", usersRoutes.router)
 router.get("/", (req, res, next) => {
     setTimeout(() => {
       res.status(200).end();
-    }, 10000);
+    }, 100);
   }) 
 
 module.exports.router = router

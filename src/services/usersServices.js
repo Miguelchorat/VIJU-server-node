@@ -2,9 +2,9 @@ const usersModel = require("../database/usersModel");
 const { v4: uuid } = require("uuid");
 
 const checkUserEmail = (email, password) => {
-  const user = usersModel.checkUserEmail(email, password);
-  if (!user) return false;
-  return user.id;
+  const id = usersModel.checkUserEmail(email, password);
+  if (!id) return false;
+  return id;
 }
 
 const getOneUser = (id) => {

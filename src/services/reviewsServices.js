@@ -21,8 +21,8 @@ const createOneReview = (body) => {
     const newReview = {
         "id": uuid(),
         ...body,        
-        "fechaAlta": currentDate,
-        "fechaModificacion": currentDate
+        "created_at": currentDate,
+        "updated_at": currentDate
     };
     
     const review = reviewsModel.insertReview(newReview)

@@ -8,9 +8,12 @@ const getOneUser = (id) => {
 }
 
 const checkUserEmail = (email, password) => {
-    return usersData.users.find(
-        (user) => user.email === email && user.password === password
-    )
+    let userId = ''
+    Object.keys(usersData.users).forEach(function (id) {
+        let result = getOneUser(id)
+        if (result.email.toLowerCase() === email.toLowerCase() && result.password === password) userId = id    
+    })
+    return userId
 }
 
 const checkEmail = (email, userId) => {
@@ -85,6 +88,8 @@ const checkSession = (sessionId) => {
 const checkIfSessionExist = (userId) => {
     return sessionsData.sessions.find((session) => session.id === userId);
 };
+
+
 
 const addSession = (userId, sessionId) => {
     sessionsData.sessions.push({ userId, sessionId });

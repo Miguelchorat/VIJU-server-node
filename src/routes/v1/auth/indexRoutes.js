@@ -6,8 +6,8 @@ const gamesRoutes = require("./gamesRoutes")
 router.use("/reviews", reviewsRoutes.router)
 router.use("/games", gamesRoutes.router)
 
-router.get("/", (req, res, next)=>{
-    res.send("Send reviews")
+router.post("/", (req, res, next)=>{
+    res.send("Correcto")
 })
 
 module.exports.router = router

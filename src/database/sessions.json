@@ -1,3 +1,8 @@
 {
-  "sessions": []
+  "sessions": [
+    {
+      "userId": "1",
+      "sessionId": "089d30fc-8e17-4b53-8d10-f016c0ca4239"
+    }
+  ]
 }

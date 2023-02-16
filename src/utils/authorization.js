@@ -2,6 +2,7 @@ const { v4: uuid } = require("uuid");
 const authenticationService = require("../services/usersServices");
 
 const authenticateUser = (req, res, next) => {
+  console.log("INICIO")
   const { password, email } = req.body;
   const { cookies } = req;
 
@@ -26,7 +27,7 @@ const authenticateUser = (req, res, next) => {
       authenticationService.addSession(id, sessionId);
     }
 
-    res.cookie("sessionId", sessionId, { hhtpOnly: true });
+    res.cookie("sessionId", sessionId, { httpOnly: true ,secure: true, sameSite: 'none'});
     next();
   } else if (cookies.sessionId) {
 
