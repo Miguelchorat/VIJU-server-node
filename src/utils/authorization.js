@@ -2,7 +2,6 @@ const { v4: uuid } = require("uuid");
 const authenticationService = require("../services/usersServices");
 
 const authenticateUser = (req, res, next) => {
-  console.log("INICIO")
   const { password, email } = req.body;
   const { cookies } = req;
 

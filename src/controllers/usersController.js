@@ -44,11 +44,35 @@ const deleteOneUser = ((req,res,next)=>{
     next()
 })
 
+const deleteSession = ((req,res,next)=>{
+    let id = req.params.id
+
+    const deleteSession = usersService.deleteSession(id)
+    if(!deleteSession){
+        res.status(400).send({message: "La sesión no fue eliminada"}).end()
+        res.locals.message = "Error"
+    } else {
+        res.send(deleteSession).end()
+        res.locals.message = "OK"
+    }
+    next()
+})
+
 const getOneUser = ((req,res,next)=>{
     let id = req.params.id
     const oneUser = usersService.getOneUser(id)
     if(oneUser)
         res.send(oneUser)
+    else
+        res.status(404).end()
+})
+
+const getOneUserLogin = ((req,res,next)=>{
+    let email = req.body.email
+    let id = usersService.checkEmail(email)
+    const oneUser = usersService.getOneUser(id)
+    if(oneUser)
+        res.send(oneUser.id)
     else
         res.status(404).end()
 })
@@ -59,7 +83,7 @@ const checkEmail = ((req,res,next)=>{
         res.status(400).end()
     }
     else{
-        res.send(usersService.checkEmail(email))
+        res.send(!!usersService.checkEmail(email))
     }
 })
 
@@ -79,5 +103,7 @@ module.exports = {
     checkUsername,
     updateUser,
     deleteOneUser,
-    getOneUser
+    getOneUser,
+    deleteSession,
+    getOneUserLogin
 }

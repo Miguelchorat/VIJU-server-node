@@ -21,7 +21,7 @@ const checkEmail = (email, userId) => {
     Object.keys(usersData.users).forEach(function (id) {
         if (id !== userId) {
             let result = getOneUser(id)
-            if (result.email.toLowerCase() === email.toLowerCase()) check = true
+            if (result.email.toLowerCase() === email.toLowerCase()) check = id
         }
     })
     return check
@@ -44,7 +44,7 @@ const checkUsername = (username, userId) => {
 
 const insertUser = (user) => {
     const id = user.id
-    const existingEmail = checkEmail(user.email,id)
+    const existingEmail = !!checkEmail(user.email,id)
     const existingUsername = checkUsername(user.username,id)
     
     if (existingEmail && existingUsername) {
@@ -86,7 +86,7 @@ const checkSession = (sessionId) => {
 };
 
 const checkIfSessionExist = (userId) => {
-    return sessionsData.sessions.find((session) => session.id === userId);
+    return sessionsData.sessions.find((session) => session.userId === userId);
 };
 
 
@@ -99,6 +99,20 @@ const addSession = (userId, sessionId) => {
         "utf8"
     );
 };
+
+const deleteSession = (id) => {
+    const index = sessionsData.sessions.findIndex((session) => session.userId === id);
+
+    if (index !== -1) {
+        sessionsData.sessions.splice(index, 1);
+
+        fs.writeFileSync(
+            "./src/database/sessions.json",
+            JSON.stringify(sessionsData, null, 2),
+            "utf8"
+        );
+    } 
+}
 
 const deleteOneUser = (id) => {
     delete usersData.users[id]
@@ -119,5 +133,6 @@ module.exports = {
     checkEmail,
     checkUsername,
     updateUser,
-    deleteOneUser
+    deleteOneUser,
+    deleteSession
 }

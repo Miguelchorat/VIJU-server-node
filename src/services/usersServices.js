@@ -75,6 +75,17 @@ const checkIfSessionExist = (userId) => {
   return session.sessionId;
 }
 
+const deleteSession = (userId) => {
+  const session = usersModel.checkIfSessionExist(userId)
+  if (!session) return false
+  usersModel.deleteSession(userId)
+  if (!usersModel.checkIfSessionExist(userId)) {
+    return session
+  } else {
+    return false
+  }
+}
+
 module.exports = {
   checkUserEmail,
   addSession,
@@ -85,5 +96,6 @@ module.exports = {
   checkUsername,
   updateUser,
   deleteOneUser,
-  getOneUser
+  getOneUser,
+  deleteSession
 };
