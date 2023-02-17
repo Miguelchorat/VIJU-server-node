@@ -59,6 +59,46 @@
       "score": 2.4,
       "created_at": "2023-02-15",
       "updated_at": "2023-02-15"
+    },
+    "45a67c20-ce20-4a96-9f81-fd9b0f055017": {
+      "id": "45a67c20-ce20-4a96-9f81-fd9b0f055017",
+      "title": "prueba",
+      "message": "eklgniwegwripg",
+      "videogame": "7",
+      "user": "1",
+      "score": "3",
+      "created_at": "2023-02-17",
+      "updated_at": "2023-02-17"
+    },
+    "7782af55-5aac-40ff-ab85-eba61eef5301": {
+      "id": "7782af55-5aac-40ff-ab85-eba61eef5301",
+      "title": "Prueba 2",
+      "message": "Esto es una prueba de verdad",
+      "videogame": "11",
+      "user": "1",
+      "score": "1",
+      "created_at": "2023-02-17",
+      "updated_at": "2023-02-17"
+    },
+    "7d8c568f-b0c6-40ec-8b9e-6f7265518b61": {
+      "id": "7d8c568f-b0c6-40ec-8b9e-6f7265518b61",
+      "title": "Prueba 3",
+      "message": "Esto es una prueba para un ejemplo",
+      "videogame": "15",
+      "user": "1",
+      "score": "4",
+      "created_at": "2023-02-17",
+      "updated_at": "2023-02-17"
+    },
+    "dc868a9f-2819-4217-a133-f5e2e2789f60": {
+      "id": "dc868a9f-2819-4217-a133-f5e2e2789f60",
+      "title": "ewñkgjwrpog",
+      "message": "oewkpore wb ejg roiejg eg",
+      "videogame": "16",
+      "user": "1",
+      "score": "3",
+      "created_at": "2023-02-17",
+      "updated_at": "2023-02-17"
     }
   }
 }
