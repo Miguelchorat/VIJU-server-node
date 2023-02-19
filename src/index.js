@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(cookieParser())
 //Usa CORS por temas de seguridad
 app.use(cors({
-    origin: 'https://miguelchorat.github.io/',
+    origin: 'https://miguelchorat.github.io',
     credentials: true
 }))
 
