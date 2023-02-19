@@ -9,11 +9,16 @@ const PORT = process.env.PORT || 3001
 
 app.use(express.json())
 app.use(cookieParser())
+//Usa CORS por temas de seguridad
 app.use(cors({
     origin: 'http://localhost:5173',
     credentials: true
 }))
+
+//Ruta que usara en caso de no necesitar autorización
 app.use("/api/v1", routesV1.router)
+
+//Ruta que usara en caso de si necesitar autorización
 app.use("/api/v1/auth", auth.authenticateUser, routesAuthV1.router)
 
 app.use((err, req, res, next) => {
@@ -21,6 +26,7 @@ app.use((err, req, res, next) => {
     res.end();
 })
 
+//Por el puerto donde estará escuchando el servidor
 app.listen(PORT, () => {
     console.log("\x1b[41m%s\x1b[0m",
         '[START] Se inicia el servidor en ' + PORT)

@@ -1,5 +1,7 @@
 const gamesService = require("../services/gamesServices")
+//Controlador de los juegos
 
+//Metodo para recibir todos los juegos en el JSON
 const getAllGames = ((req,res,next)=>{
     const allGames = gamesService.getAllGames();
 
@@ -10,6 +12,7 @@ const getAllGames = ((req,res,next)=>{
     }
 })
 
+//Recibe un solo juego por su ID
 const getOneGame = ((req,res,next)=>{
     let id =req.params.id
     const oneGame = gamesService.getOneGame(id)

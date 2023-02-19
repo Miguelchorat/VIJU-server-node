@@ -1,5 +1,7 @@
 const usersService = require("../services/usersServices")
+//Controlador de los usuarios
 
+//MAnda a crear un usuario con el contenido que le llego en el cuerpo de la petición
 const createOneUser = ((req,res,next)=>{
     const {body} = req
     if(!body.username || !body.email  || !body.password || !body.date ){
@@ -17,6 +19,7 @@ const createOneUser = ((req,res,next)=>{
     }    
 })
 
+//Manda a actualizar el usuario con el contenido que le llego por el cuerpo de la petición
 const updateUser = ((req,res,next)=>{
     let newUser = req.body
     const userUpdate = usersService.updateUser(newUser)
@@ -29,6 +32,7 @@ const updateUser = ((req,res,next)=>{
     }    
 })
 
+//Manda a borra el usuario que coincida con el id que llego por parametro
 const deleteOneUser = ((req,res,next)=>{
     let id = req.params.id
 
@@ -44,6 +48,7 @@ const deleteOneUser = ((req,res,next)=>{
     next()
 })
 
+//Manda a eliminar la sessión del usuario 
 const deleteSession = ((req,res,next)=>{
     let id = req.params.id
 
@@ -58,6 +63,7 @@ const deleteSession = ((req,res,next)=>{
     next()
 })
 
+//Manda a pedir un usuario que coincida con el id que le llega por parametro
 const getOneUser = ((req,res,next)=>{
     let id = req.params.id
     const oneUser = usersService.getOneUser(id)
@@ -67,6 +73,7 @@ const getOneUser = ((req,res,next)=>{
         res.status(404).end()
 })
 
+//Pide un usuario que coincida con el correo que le llega por el cuerpo 
 const getOneUserLogin = ((req,res,next)=>{
     let email = req.body.email
     let id = usersService.checkEmail(email)
@@ -77,6 +84,7 @@ const getOneUserLogin = ((req,res,next)=>{
         res.status(404).end()
 })
 
+//Pide que chequee si el correo que le llega por parametro existe
 const checkEmail = ((req,res,next)=>{
     const email = req.params.email
     if(!email){
@@ -87,6 +95,7 @@ const checkEmail = ((req,res,next)=>{
     }
 })
 
+//Pide que cheque si el nombre de usuario que le llega por parametro existe
 const checkUsername = ((req,res,next)=>{
     const username = req.params.username
     if(!username){

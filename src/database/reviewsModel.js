@@ -1,9 +1,10 @@
 const data = require("./reviews.json")
 const dataGame = require("./games.json")
 const dataUser = require("./users.json")
-
 const fs = require("fs")
+//Modelo de reseña que se conecta con el JSON
 
+//Recoge del JSON todas las reseñas
 const getAllReviews = () => {
     let json = []
     
@@ -15,6 +16,7 @@ const getAllReviews = () => {
     return json
 }
 
+//Recoge del JSON todas las reseñas que incluyan el contenido de la variable search
 const getAllReviewsWithSearch = (search) => {
     let json = []
     Object.keys(data.reviews).forEach(function(review) {
@@ -26,6 +28,19 @@ const getAllReviewsWithSearch = (search) => {
     return json
 }
 
+//Recoge del JSON todas las reseñas que incluyan el contenido de la variable search y el id coincidan con el id del usuario de la reseña
+const getAllReviewsWithSearchAndId = (search,id) => {
+    let json = []
+    Object.keys(data.reviews).forEach(function(review) {
+        let result = getOneReview(review)
+        if((search === '-all' || result.title.toLowerCase().indexOf(search.toLowerCase())) !== -1 && result.user === id)
+            json.push(result)
+    });
+    
+    return json
+}
+
+//Recoge del JSON la reseña que coincida con la id
 const getOneReview = (id) => {
     const oneReview = data.reviews[id]
     const oneGame = dataGame.games[oneReview.videogame]
@@ -40,26 +55,39 @@ const getOneReview = (id) => {
     return result
 }
 
-// const deleteOneProduct = (nombre) => {
-//     delete datos.productos[nombre];
+//Elimina del JSON la reseña que coincida con la id
+const deleteOneReview = (id) => {
+    delete data.reviews[id];
     
-//     fs.writeFileSync(
-//       "./src/database/productos.json",
-//       JSON.stringify(datos, null, 2),
-//       "utf8"
-//     );
-// };
+    fs.writeFileSync(
+      "./src/database/reviews.json",
+      JSON.stringify(data, null, 2),
+      "utf8"
+    )
+}
 
-// const updateOneProduct = (producto) => {
-//     datos.productos[producto.nombre] = producto
+//Actualiza del JSON la reseña que le llega
+const updateOneReview = (newReview) => {
+    const review = data.reviews[newReview.id]
+    if (!review) return false
 
-//     fs.writeFileSync(
-//       "./src/database/productos.json",
-//       JSON.stringify(datos, null, 2),
-//       "utf8"
-//     );
-// }
+    review.title = newReview.title
+    review.score = newReview.score
+    review.videogame = newReview.videogame
+    review.message = newReview.message
+    review.updated_at = newReview.updated_at
 
+    data.reviews[newReview.id] = review
+    fs.writeFileSync(
+        "./src/database/reviews.json",
+        JSON.stringify(data, null, 2),
+        "utf8"
+    );
+
+    return newReview
+}
+
+//Introduce una nueva reseña en el JSON
 const insertReview = (review) => {
     const id = review.id
     data.reviews[id] = review
@@ -72,11 +100,13 @@ const insertReview = (review) => {
 
     return review;
 }
+
 module.exports = {
     getAllReviews,
     getAllReviewsWithSearch,
     getOneReview,    
-    // updateOneReview,
-    // deleteOneReview,
-    insertReview
+    updateOneReview,
+    deleteOneReview,
+    insertReview,
+    getAllReviewsWithSearchAndId
 }

@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const gamesController = require("../../../controllers/gamesController")
+//Rutas de juegos
 
 router.route("/").get(gamesController.getAllGames)
 

@@ -7,7 +7,7 @@
       "password": "3dd635a808ddb6dd4b6731f7c409d53dd4b14df2",
       "date": "1996-09-29",
       "created_at": "2023-02-15",
-      "updated_at": "2023-02-15"
+      "updated_at": "2023-02-19"
     },
     "89ab3fe3-ce57-4a45-959c-f596483c822b": {
       "id": "89ab3fe3-ce57-4a45-959c-f596483c822b",
@@ -16,7 +16,16 @@
       "password": "3dd635a808ddb6dd4b6731f7c409d53dd4b14df2",
       "date": "1996-09-29",
       "created_at": "2023-02-15",
-      "updated_at": "2023-02-15"
+      "updated_at": "2023-02-18"
+    },
+    "4b762986-da8a-478b-b9a5-b80ecbbf737b": {
+      "id": "4b762986-da8a-478b-b9a5-b80ecbbf737b",
+      "username": "Usuario",
+      "email": "usuario@gmail.com",
+      "password": "3dd635a808ddb6dd4b6731f7c409d53dd4b14df2",
+      "date": "1996-09-29",
+      "created_at": "2023-02-19",
+      "updated_at": "2023-02-19"
     }
   }
 }

@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const reviewsController = require("../../controllers/reviewsController")
+//Ruta de las reseñas
 
 router.route("/")
         .get(reviewsController.getAllReviews)

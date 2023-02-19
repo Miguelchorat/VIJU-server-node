@@ -1,5 +1,7 @@
 const reviewsService = require("../services/reviewsServices")
+//Controlador de las reviews
 
+//Recoge todas las reviews del JSON 
 const getAllReviews = ((req,res,next)=>{
     const allReviews = reviewsService.getAllReviews();
 
@@ -10,6 +12,7 @@ const getAllReviews = ((req,res,next)=>{
     }
 })
 
+//Recoge todas las reviews del JSON dependiendo de lo que llegue en el search
 const getAllReviewsWithSearch = ((req,res,next)=>{
     let search =req.params.search
     const allReviews = reviewsService.getAllReviewsWithSearch(search);
@@ -21,6 +24,20 @@ const getAllReviewsWithSearch = ((req,res,next)=>{
     }
 })
 
+//Recoge todas las reviews del JSON dependiendo de lo que le llegue en el search y el id de usuario
+const getAllReviewsWithSearchAndId = ((req,res,next)=>{
+    let search = req.params.search
+    let id = req.params.id
+    const allReviews = reviewsService.getAllReviewsWithSearchAndId(search,id);
+
+    if(allReviews){
+        res.send(allReviews)
+    }else{
+        res.status(404).end()
+    }
+})
+
+//Con el contenido que le llega mandará a crear una nueva review
 const createOneReview = ((req,res,next)=>{
     const {body} = req
     if(!body.title || !body.message  || !body.videogame || !body.user || !body.score ){
@@ -41,6 +58,7 @@ const createOneReview = ((req,res,next)=>{
     res.end()
 })
 
+//Pide una review dependiendo que coincida con el id llegado por parametro
 const getOneReview = ((req,res,next)=>{
     let id =req.params.id
     const oneReview = reviewsService.getOneReview(id)
@@ -51,31 +69,28 @@ const getOneReview = ((req,res,next)=>{
     }
 })
 
-// const updateOneProduct = ((req,res,next)=>{    
-//     const {body} = req
+//Manda a actualizar una review con los datos que le llego por el cuerpo de la petición
+const updateOneReview = ((req,res,next)=>{    
+    let newReview = req.body
+    const updateReview = reviewsService.updateOneReview(newReview);
+    !updateReview ? res.status(400).end() : res.send('Review modificado').end()    
+})
 
-//     if(!body.nombre || !body.precio  || !body.categoria ){
-//         res.status(400).end()
-//     }
+//Manda a eliminar la review con el id que llego por parametro
+const deleteOneReview = (req, res, next) => {
+    let id =req.params.id
   
-//     const modificarProducto = productosService.updateOneProduct(body);
+    const deleteReview = reviewsService.deleteOneReview(id);
   
-//     !modificarProducto ? res.status(400).end() : res.send('Producto modificado').end()
-// })
-
-// const deleteOneProduct = (req, res, next) => {
-//     let producto =req.params.producto
-  
-//     const borrarProducto = productosService.deleteOneProduct(producto);
-  
-//     borrarProducto ? res.status(400).end() : res.send('Producto borrado').end()
-// }
+    deleteReview ? res.status(400).end() : res.send('Review borrado').end()
+}
 
 module.exports = {
     getAllReviews,
     getAllReviewsWithSearch,
     createOneReview,
     getOneReview,
-    // updateOneReview,
-    // deleteOneReview
+    updateOneReview,
+    deleteOneReview,
+    getAllReviewsWithSearchAndId
 }

@@ -1,6 +1,9 @@
 const { v4: uuid } = require("uuid");
 const authenticationService = require("../services/usersServices");
+//Comprobación de si el usuario esta logeado o no
 
+//Comprueba que el usuario existe. En caso de existir y no estar logeado le crea una sesión y lo guarda en las cookies.
+//En el caso del usuario tener ya una sesión existente solo modificara dicha sessión con otra ID
 const authenticateUser = (req, res, next) => {
   const { password, email } = req.body;
   const { cookies } = req;
@@ -37,6 +40,7 @@ const authenticateUser = (req, res, next) => {
     }
     next();
   } else {
+    res.status(401).send({ message: "No tienes autorización" }).end();
     throw new Error("Error desconocido");
   }
 };
